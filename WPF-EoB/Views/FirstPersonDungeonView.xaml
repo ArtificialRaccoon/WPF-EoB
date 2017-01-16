@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="WPF_EoB.Views.FirstPersonDungeonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:EoBControls="clr-namespace:WPF_EoB.Controls"
+             xmlns:Commands="clr-namespace:WPF_EoB.Classes"
+             mc:Ignorable="d" RenderOptions.BitmapScalingMode="NearestNeighbor">
+    <UserControl.Resources>
+        <Commands:DungeonNavigationCommands x:Key="DungeonNavigationCommands"/>
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Key="W" Command="{Binding Source={StaticResource DungeonNavigationCommands}, Path=TranslatePlayerYCommand}" CommandParameter="1"/>
+        <KeyBinding Key="S" Command="{Binding Source={StaticResource DungeonNavigationCommands}, Path=TranslatePlayerYCommand}" CommandParameter="-1"/>
+        <KeyBinding Key="Q" Command="{Binding Source={StaticResource DungeonNavigationCommands}, Path=TranslatePlayerXCommand}" CommandParameter="1"/>
+        <KeyBinding Key="E" Command="{Binding Source={StaticResource DungeonNavigationCommands}, Path=TranslatePlayerXCommand}" CommandParameter="-1"/>
+        <KeyBinding Key="A" Command="{Binding Source={StaticResource DungeonNavigationCommands}, Path=RotatePlayerCommand}" CommandParameter="-1"/>
+        <KeyBinding Key="D" Command="{Binding Source={StaticResource DungeonNavigationCommands}, Path=RotatePlayerCommand}" CommandParameter="1"/>
+    </UserControl.InputBindings>
+    <Viewbox>
+        <Canvas Width="256" Height="144" Background="Black">            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <EoBControls:CharacterPortrait Grid.Row="0"/>
+                    <EoBControls:CharacterPortrait Grid.Row="1" Margin="0,1,0,0"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <EoBControls:FirstPersonView Grid.Row="0" Margin="0,1,0,0"/>
+                    <EoBControls:FirstPersonHUD Grid.Row="1" Margin="0,2,0,0"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <EoBControls:CharacterPortrait Grid.Row="0"/>
+                    <EoBControls:CharacterPortrait Grid.Row="1" Margin="0,1,0,0"/>
+                </Grid>
+            </Grid>
+        </Canvas>
+    </Viewbox>
+</UserControl>

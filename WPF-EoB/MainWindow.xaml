@@ -1,0 +1,8 @@
+﻿<Window x:Class="WPF_EoB.MainWindow"        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:EoBViews="clr-namespace:WPF_EoB.Views"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
+        FocusManager.FocusedElement="{Binding ElementName=PlayView}"
+        Title="MainWindow" RenderOptions.BitmapScalingMode="NearestNeighbor">    
+    <EoBViews:FirstPersonDungeonView x:Name="PlayView" Grid.Row="0" Focusable="True"/>
+</Window>

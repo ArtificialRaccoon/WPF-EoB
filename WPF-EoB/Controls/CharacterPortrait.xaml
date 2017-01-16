@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="WPF_EoB.Controls.CharacterPortrait"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" RenderOptions.BitmapScalingMode="NearestNeighbor">
+    <Viewbox>
+        <Canvas Name="PortraitCanvas" Width="40" Height="72">
+            <Rectangle Name="background" Width="40" Height="72">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="../Images/CharacterPortraitBG.png"/>
+                </Rectangle.Fill>
+            </Rectangle>            
+            <Canvas>
+                <Canvas>
+                    <Rectangle Height="32" Width="32" >
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="../Images/CharacterSheet.png" Viewbox="0,0,0.1,1"/>
+                        </Rectangle.Fill>
+                        <Rectangle.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform Y="-16"/>
+                                <TranslateTransform Y="26"/>
+                                <TranslateTransform X="-16"/>
+                                <TranslateTransform X="20"/>
+                            </TransformGroup>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
+                </Canvas>
+                <Canvas>
+                    <Rectangle Width="32" Height="5">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="../Images/PointBar.png" Viewbox="0,0,1,1"/>
+                        </Rectangle.Fill>
+                        <Rectangle.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform Y="-2.5"/>
+                                <TranslateTransform Y="46"/>
+                                <TranslateTransform X="-16"/>
+                                <TranslateTransform X="20"/>
+                            </TransformGroup>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
+                </Canvas>
+                <Canvas>
+                    <Rectangle Width="32" Height="5">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="../Images/PointBar.png" Viewbox="0,0,1,1"/>
+                        </Rectangle.Fill>
+                        <Rectangle.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform Y="-2.5"/>
+                                <TranslateTransform Y="52"/>
+                                <TranslateTransform X="-16"/>
+                                <TranslateTransform X="20"/>
+                            </TransformGroup>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
+                </Canvas>
+            </Canvas>
+        </Canvas>
+    </Viewbox>
+</UserControl>

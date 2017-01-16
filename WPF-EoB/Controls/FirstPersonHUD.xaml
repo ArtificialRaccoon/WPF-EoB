@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="WPF_EoB.Controls.FirstPersonHUD"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:EoBControls="clr-namespace:WPF_EoB.Controls"
+             mc:Ignorable="d" RenderOptions.BitmapScalingMode="NearestNeighbor">
+    <Viewbox>
+        <Canvas Name="HudCanvas" Width="176" Height="42">
+            <Canvas Name="Background" Width="176" Height="42">
+                <Rectangle Width="176" Height="42">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/WPF-EoB;component/Images/HUDPanel.png"/>
+                    </Rectangle.Fill>
+                </Rectangle>                
+            </Canvas>
+            <Canvas Name="Compass" Width="38" Height="9">
+                <Rectangle Width="38" Height="9">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/WPF-EoB;component/Images/CompassBase.png"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-4.5"/>
+                            <TranslateTransform Y="35"/>
+                            <TranslateTransform X="-19"/>
+                            <TranslateTransform X="88"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Width="6" Height="6">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="/WPF-EoB;component/Images/NESW.png" Viewbox="0.75,0,0.25,1"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-3"/>
+                            <TranslateTransform Y="36"/>
+                            <TranslateTransform X="-3"/>
+                            <TranslateTransform X="88"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Canvas>
+            <EoBControls:NavigationButtons>
+                <EoBControls:NavigationButtons.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform Y="-13"/>
+                        <TranslateTransform Y="17"/>
+                        <TranslateTransform X="-19"/>
+                        <TranslateTransform X="88"/>
+                    </TransformGroup>
+                </EoBControls:NavigationButtons.RenderTransform>
+            </EoBControls:NavigationButtons>
+            <EoBControls:Minimap>
+                <EoBControls:Minimap.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform Y="-16.5"/>
+                        <TranslateTransform Y="21"/>
+                        <TranslateTransform X="-16.5"/>
+                        <TranslateTransform X="155"/>
+                    </TransformGroup>                    
+                </EoBControls:Minimap.RenderTransform>
+            </EoBControls:Minimap>
+        </Canvas>        
+    </Viewbox>
+</UserControl>

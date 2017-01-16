@@ -1,0 +1,319 @@
+﻿<UserControl x:Class="WPF_EoB.Controls.FirstPersonView"
+             xmlns:DataConverters="clr-namespace:WPF_EoB.DataConverters"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" RenderOptions.BitmapScalingMode="NearestNeighbor">
+    <UserControl.Resources>
+        <DataConverters:VisionRowToVisibilityConverter x:Key="VisionRowToVisibilityConverter"/>
+        <DataConverters:IndexToViewPortConverter x:Key="IndexToViewPortConverter"/>
+    </UserControl.Resources>
+    <Viewbox>
+        <Canvas Name="MapCanvas" Width="176" Height="99" DataContext="{Binding PlayerView}" ClipToBounds="True">
+            <Rectangle Name="background" Width="176" Height="99">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="../Images/BackgroundSheet.png" Viewbox="0.75,0,0.25,1"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Canvas DataContext="{Binding RowFour}">
+                <Rectangle Name="dFarSideLeft" Width="24" Height="35" Visibility="{Binding Item2, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetDSideFar.png" Viewbox="{Binding Item2, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-17.5"/>
+                            <TranslateTransform Y="36"/>
+                            <TranslateTransform X="16"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="dSideLeft" Width="16" Height="35" Visibility="{Binding Item3, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetDSide.png" Viewbox="{Binding Item3, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-17.5"/>
+                            <TranslateTransform Y="36"/>
+                            <TranslateTransform X="64"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="dSideRight" Width="16" Height="35" Visibility="{Binding Item5, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetDSide.png" Viewbox="{Binding Item5, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-17.5"/>
+                            <TranslateTransform Y="36"/>
+                            <TranslateTransform X="-112"/>
+                            <ScaleTransform ScaleX="-1"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="dFarSideRight" Width="24" Height="35" Visibility="{Binding Item6, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetDSideFar.png" Viewbox="{Binding Item6, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-17.5"/>
+                            <TranslateTransform Y="36"/>
+                            <TranslateTransform X="-160"/>
+                            <ScaleTransform ScaleX="-1"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="cForwardL2" Width="48" Height="37" Visibility="{Binding Item2, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetC.png" Viewbox="{Binding Item2, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-18.5"/>
+                            <TranslateTransform Y="37"/>
+                            <TranslateTransform X="-24"/>
+                            <TranslateTransform X="-8"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="cForwardL1" Width="48" Height="37" Visibility="{Binding Item3, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetC.png" Viewbox="{Binding Item3, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-18.5"/>
+                            <TranslateTransform Y="37"/>
+                            <TranslateTransform X="-24"/>
+                            <TranslateTransform X="40"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="cForwardCenter" Width="48" Height="37" Visibility="{Binding Item4, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetC.png" Viewbox="{Binding Item4, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-18.5"/>
+                            <TranslateTransform Y="37"/>
+                            <TranslateTransform X="-24"/>
+                            <TranslateTransform X="88"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="cForwardR1" Width="48" Height="37" Visibility="{Binding Item5, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetC.png" Viewbox="{Binding Item5, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-18.5"/>
+                            <TranslateTransform Y="37"/>
+                            <TranslateTransform X="-24"/>
+                            <TranslateTransform X="136"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="cForwardR2" Width="48" Height="37" Visibility="{Binding Item6, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetC.png" Viewbox="{Binding Item6, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-18.5"/>
+                            <TranslateTransform Y="37"/>
+                            <TranslateTransform X="-24"/>
+                            <TranslateTransform X="184"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Canvas>
+            <Canvas DataContext="{Binding RowThree}">
+                <Rectangle Name="cFarSideLeft" Width="16" Height="44" Visibility="{Binding Item1, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetCSideFar.png" Viewbox="{Binding Item1, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-22"/>
+                            <TranslateTransform Y="38"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="cSideL1" Width="16" Height="59" Visibility="{Binding Item2, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetCSide.png" Viewbox="{Binding Item2, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-29.5"/>
+                            <TranslateTransform Y="40"/>
+                            <TranslateTransform X="48"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="cSideR1" Width="16" Height="59" Visibility="{Binding Item4, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetCSide.png" Viewbox="{Binding Item4, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-29.5"/>
+                            <TranslateTransform Y="40"/>
+                            <TranslateTransform X="-128"/>
+                            <ScaleTransform ScaleX="-1"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="cFarSideRight" Width="16" Height="44" Visibility="{Binding Item5, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetCSideFar.png" Viewbox="{Binding Item5, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-22"/>
+                            <TranslateTransform Y="38"/>
+                            <TranslateTransform X="-176"/>
+                            <ScaleTransform ScaleX="-1"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="bForwardL1" Width="80" Height="59" Visibility="{Binding Item2, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetB.png" Viewbox="{Binding Item2, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-29.5"/>
+                            <TranslateTransform Y="40"/>
+                            <TranslateTransform X="-40"/>
+                            <TranslateTransform X="8"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="bForwardCenter" Width="80" Height="59" Visibility="{Binding Item3, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetB.png" Viewbox="{Binding Item3, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-29.5"/>
+                            <TranslateTransform Y="40"/>
+                            <TranslateTransform X="-40"/>
+                            <TranslateTransform X="88"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="bForwardR1" Width="80" Height="59" Visibility="{Binding Item4, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetB.png" Viewbox="{Binding Item4, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-29.5"/>
+                            <TranslateTransform Y="40"/>
+                            <TranslateTransform X="-40"/>
+                            <TranslateTransform X="168"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Canvas>
+            <Canvas DataContext="{Binding RowTwo}">
+                <Rectangle Name="bSideL1" Width="24" Height="95" Visibility="{Binding Item1, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetBSide.png" Viewbox="{Binding Item1, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-47.5"/>
+                            <TranslateTransform Y="46"/>
+                            <TranslateTransform X="24"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="bSideR1" Width="24" Height="95" Visibility="{Binding Item3, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetBSide.png" Viewbox="{Binding Item3, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-47.5"/>
+                            <TranslateTransform Y="46"/>
+                            <TranslateTransform X="-152"/>
+                            <ScaleTransform ScaleX="-1"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="aForwardLeft" Width="128" Height="96" Visibility="{Binding Item1, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetA.png" Viewbox="{Binding Item1, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-48"/>
+                            <TranslateTransform Y="46"/>
+                            <TranslateTransform X="-104"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="aForward" Width="128" Height="96" Visibility="{Binding Item2, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetA.png" Viewbox="{Binding Item2, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-48"/>
+                            <TranslateTransform Y="46"/>
+                            <TranslateTransform X="-64"/>
+                            <TranslateTransform X="88"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="aForwardRight" Width="128" Height="96" Visibility="{Binding Item3, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetA.png" Viewbox="{Binding Item3, Converter={StaticResource IndexToViewPortConverter}}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-48"/>
+                            <TranslateTransform Y="46"/>
+                            <TranslateTransform X="152"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Canvas>
+            <Canvas DataContext="{Binding RowOne}">
+                <Rectangle Name="aSideLeft" Width="24" Height="120" Visibility="{Binding Item1, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetASide.png" Viewbox="{Binding Item1, Converter={StaticResource IndexToViewPortConverter}}" />
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-60"/>
+                            <TranslateTransform Y="50"/>
+                            <TranslateTransform X="0"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="aSideRight" Width="24" Height="120" Visibility="{Binding Item3, Converter={StaticResource VisionRowToVisibilityConverter}}">
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Images/SheetASide.png" Stretch="None" Viewbox="{Binding Item3, Converter={StaticResource IndexToViewPortConverter}, ConverterParameter=24}"/>
+                    </Rectangle.Fill>
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform Y="-60"/>
+                            <TranslateTransform Y="50"/>
+                            <TranslateTransform X="-176"/>
+                            <ScaleTransform ScaleX="-1"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+            </Canvas>
+        </Canvas>
+    </Viewbox>
+</UserControl>
