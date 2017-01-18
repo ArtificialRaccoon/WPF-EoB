@@ -12,6 +12,9 @@ namespace WPF_EoB.DataConverters
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
+            if (!(value is Classes.Enumerations.Direction))
+                throw new ArgumentException("RotationToViewPortConverter attempted to convert a value which was not a direction enumeration.");
+
             Rect returnValue = new Rect();
             byte texIndex = 0;
 

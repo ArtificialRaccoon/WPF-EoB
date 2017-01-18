@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:EoBControls="clr-namespace:WPF_EoB.Controls"
-             xmlns:Commands="clr-namespace:WPF_EoB.Classes"
+             xmlns:Commands="clr-namespace:WPF_EoB.Classes" 
              mc:Ignorable="d" RenderOptions.BitmapScalingMode="NearestNeighbor">
     <UserControl.Resources>
         <Commands:DungeonNavigationCommands x:Key="DungeonNavigationCommands"/>

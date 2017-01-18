@@ -8,17 +8,25 @@ using System.Windows;
 
 namespace WPF_EoB.DataConverters
 {
-    class VisionRowToVisibilityConverter : IValueConverter
+    public class TextureIndexToViewPortConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (!(value is byte))
-                throw new ArgumentException("VisionRowToVisibilityConverter attempted to convert a value which was not a byte.");
+                throw new ArgumentException("TextureIndexToViewPortConverter attempted to convert a value which was not a byte.");
 
-            Visibility returnValue = Visibility.Hidden;
-
+            Rect returnValue = new Rect();
+            
             if ((byte)value > 0)
-                returnValue = Visibility.Visible;            
+            {
+                byte texIndex = (byte)value;
+                texIndex = --texIndex;
+
+                returnValue.X = 0.5 * texIndex;
+                returnValue.Y = 0;
+                returnValue.Width = 0.5;
+                returnValue.Height = 1;
+            }
 
             return returnValue;
         }

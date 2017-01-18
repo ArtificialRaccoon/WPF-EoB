@@ -4,9 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:DataConverters="clr-namespace:WPF_EoB.DataConverters"
+             xmlns:Classes="clr-namespace:WPF_EoB.Classes"
              mc:Ignorable="d" RenderOptions.BitmapScalingMode="NearestNeighbor">
     <UserControl.Resources>
         <DataConverters:RotationToViewPortConverter x:Key="RotationToViewPortConverter"/>
+        <DataConverters:MiniMapConverter x:Key="MiniMapConverter"/>
+        <!--The Binding Proxy allows us to pass the CurrentDungeon in as a command parameter-->
+        <Classes:BindingProxy x:Key="DungeonMap" Data="{Binding CurrentDungeon}" />
     </UserControl.Resources>
     <Viewbox>
         <Canvas Width="33" Height="33">
@@ -17,6 +21,13 @@
                     </Rectangle.Fill>
                 </Rectangle>
             </Canvas>
+            <ItemsControl Width="33" Height="33" ItemsSource="{Binding CurrentPosition, Converter={StaticResource MiniMapConverter}, ConverterParameter={StaticResource DungeonMap}}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
             <Canvas Name="Facing" Width="5" Height="5">
                 <Rectangle Width="5" Height="5">
                     <Rectangle.Fill>

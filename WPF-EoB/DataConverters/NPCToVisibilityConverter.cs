@@ -8,17 +8,18 @@ using System.Windows;
 
 namespace WPF_EoB.DataConverters
 {
-    class VisionRowToVisibilityConverter : IValueConverter
+    public class NPCToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (!(value is byte))
-                throw new ArgumentException("VisionRowToVisibilityConverter attempted to convert a value which was not a byte.");
+            if (!(value is Classes.NPCClass))
+                throw new ArgumentException("NPCToVisibilityConverter attempted to convert a value which was not an NPC.");
 
             Visibility returnValue = Visibility.Hidden;
+            Classes.NPCClass inputNPC = (Classes.NPCClass)value;
 
-            if ((byte)value > 0)
-                returnValue = Visibility.Visible;            
+            if (inputNPC.Name != string.Empty)
+                returnValue = Visibility.Visible;
 
             return returnValue;
         }

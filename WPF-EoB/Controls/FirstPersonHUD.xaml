@@ -3,8 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:DataConverters="clr-namespace:WPF_EoB.DataConverters"
              xmlns:EoBControls="clr-namespace:WPF_EoB.Controls"
              mc:Ignorable="d" RenderOptions.BitmapScalingMode="NearestNeighbor">
+    <UserControl.Resources>
+        <DataConverters:RotationToViewPortConverter x:Key="RotationToViewPortConverter"/>
+    </UserControl.Resources>
     <Viewbox>
         <Canvas Name="HudCanvas" Width="176" Height="42">
             <Canvas Name="Background" Width="176" Height="42">
@@ -30,7 +34,7 @@
                 </Rectangle>
                 <Rectangle Width="6" Height="6">
                     <Rectangle.Fill>
-                        <ImageBrush ImageSource="/WPF-EoB;component/Images/NESW.png" Viewbox="0.75,0,0.25,1"/>
+                        <ImageBrush ImageSource="/WPF-EoB;component/Images/NESW.png" Viewbox="{Binding CurrentDirection, Converter={StaticResource RotationToViewPortConverter}}"/>
                     </Rectangle.Fill>
                     <Rectangle.RenderTransform>
                         <TransformGroup>

@@ -1,8 +1,15 @@
-﻿<Window x:Class="WPF_EoB.MainWindow"        
+﻿<Window x:Class="WPF_EoB.MainWindow"  
+        Name="mainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:EoBViews="clr-namespace:WPF_EoB.Views"
+        xmlns:DataConverters="clr-namespace:WPF_EoB.DataConverters"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
         FocusManager.FocusedElement="{Binding ElementName=PlayView}"
-        Title="MainWindow" RenderOptions.BitmapScalingMode="NearestNeighbor">    
-    <EoBViews:FirstPersonDungeonView x:Name="PlayView" Grid.Row="0" Focusable="True"/>
+        Background="Black" SnapsToDevicePixels="True"
+        SizeToContent="WidthAndHeight"
+        Title="MainWindow">
+    <Window.Resources>
+        <DataConverters:WindowSizeConverter x:Key="WindowSizeConverter"/>
+    </Window.Resources>
+    <EoBViews:FirstPersonDungeonView x:Name="PlayView" Grid.Row="0" Focusable="True" Width="{Binding ActualWidth, ElementName=mainWindow, Converter={StaticResource WindowSizeConverter}, ConverterParameter=true}" Height="{Binding ActualHeight, ElementName=mainWindow, Converter={StaticResource WindowSizeConverter}, ConverterParameter=false}" />
 </Window>

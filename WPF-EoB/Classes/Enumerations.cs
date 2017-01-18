@@ -8,6 +8,9 @@ namespace WPF_EoB.Classes
 {
     public static class Enumerations
     {
+        /// <summary>
+        /// The Four Cardinal Directions...
+        /// </summary>
         public enum Direction { North, East, South, West };
     }
 }

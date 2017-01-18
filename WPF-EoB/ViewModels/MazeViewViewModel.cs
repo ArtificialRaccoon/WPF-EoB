@@ -8,6 +8,10 @@ using System.ComponentModel;
 
 namespace WPF_EoB.ViewModels
 {
+    /// <summary>
+    /// ViewModel for the MazeView control / state.
+    /// </summary>
+    /// <seealso cref="System.ComponentModel.INotifyPropertyChanged" />
     public class MazeViewViewModel : INotifyPropertyChanged
     {
         #region  OnPropertyChanged
@@ -23,11 +27,22 @@ namespace WPF_EoB.ViewModels
         }
         #endregion
 
+        #region Methods
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MazeViewViewModel"/> class.
+        /// </summary>
         public MazeViewViewModel()
         {
             UpdatePlayer(0, 0, 0);
         }
 
+        /// <summary>
+        /// Updates the players position and rotation.  As a result, the players cone of
+        /// vision will also be updated.
+        /// </summary>
+        /// <param name="deltaY">The delta y.</param>
+        /// <param name="deltaX">The delta x.</param>
+        /// <param name="rotation">The rotation.</param>
         public void UpdatePlayer(int deltaY, int deltaX, Classes.Enumerations.Direction? rotation)
         {
             if(rotation == Classes.Enumerations.Direction.East)
@@ -77,6 +92,15 @@ namespace WPF_EoB.ViewModels
                 UpdateVisionCone(true, -1, -1, deltaY, 1, deltaX);
         }
 
+        /// <summary>
+        /// Updates the players cone of vision.
+        /// </summary>
+        /// <param name="calculateForX">if set to <c>true</c> [calculate for x].  Basically for handling when the player is facing EW instead of NS.</param>
+        /// <param name="direction">The direction.</param>
+        /// <param name="deltaYSign">The delta y sign.</param>
+        /// <param name="deltaY">The delta y.</param>
+        /// <param name="deltaXSign">The delta x sign.</param>
+        /// <param name="deltaX">The delta x.</param>
         private void UpdateVisionCone(bool calculateForX, short direction, short deltaYSign, int deltaY, short deltaXSign, int deltaX)
         {
             byte a = 0, b = 0; 
@@ -84,24 +108,24 @@ namespace WPF_EoB.ViewModels
 
             if(calculateForX)
             {
-                if (CurrentDungeon.DungeonTiles[mCurrentPosition.Item2 + (deltaXSign * deltaX), mCurrentPosition.Item1 + (deltaYSign * deltaY)] < 1)
+                if (CurrentDungeon.DungeonTiles[CurrentPosition.Item2 + (deltaXSign * deltaX), CurrentPosition.Item1 + (deltaYSign * deltaY)] < 1)
                 {
-                    mCurrentPosition = new Tuple<byte, byte>((byte)(mCurrentPosition.Item1 + (deltaYSign * deltaY)), (byte)(mCurrentPosition.Item2 + (deltaXSign * deltaX)));
+                    CurrentPosition = new Tuple<byte, byte>((byte)(CurrentPosition.Item1 + (deltaYSign * deltaY)), (byte)(CurrentPosition.Item2 + (deltaXSign * deltaX)));
                 }
 
-                a = mCurrentPosition.Item1;
-                b = mCurrentPosition.Item2;
+                a = CurrentPosition.Item1;
+                b = CurrentPosition.Item2;
                 mapN2 = CurrentDungeon.DungeonTiles.GetLength(0);
                 mapN1 = CurrentDungeon.DungeonTiles.Length / mapN2;    
             }
             else 
             {
-                if (CurrentDungeon.DungeonTiles[mCurrentPosition.Item2 + (deltaYSign * deltaY), mCurrentPosition.Item1 + (deltaXSign * deltaX)] < 1)
+                if (CurrentDungeon.DungeonTiles[CurrentPosition.Item2 + (deltaYSign * deltaY), CurrentPosition.Item1 + (deltaXSign * deltaX)] < 1)
                 {
-                    mCurrentPosition = new Tuple<byte, byte>((byte)(mCurrentPosition.Item1 + (deltaXSign * deltaX)), (byte)(mCurrentPosition.Item2 + (deltaYSign * deltaY)));
+                    CurrentPosition = new Tuple<byte, byte>((byte)(CurrentPosition.Item1 + (deltaXSign * deltaX)), (byte)(CurrentPosition.Item2 + (deltaYSign * deltaY)));
                 }
-                a = mCurrentPosition.Item2;
-                b = mCurrentPosition.Item1;
+                a = CurrentPosition.Item2;
+                b = CurrentPosition.Item1;
                 mapN1 = CurrentDungeon.DungeonTiles.GetLength(0);
                 mapN2 = CurrentDungeon.DungeonTiles.Length / mapN1;            
             }
@@ -116,7 +140,7 @@ namespace WPF_EoB.ViewModels
                 if (a >= 0 && a < mapN1 && (b + (-1 + i)) >= 0 && (b + (-1 + i)) < mapN2)
                 {
                     if (calculateForX)
-                       rowOne[(deltaYSign < 0 ? Math.Abs(i - 2) : i)] = CurrentDungeon.DungeonTiles[b + (-1 + i), a];
+                        rowOne[(deltaYSign < 0 ? Math.Abs(i - 2) : i)] = CurrentDungeon.DungeonTiles[b + (-1 + i), a];
                     else
                         rowOne[(deltaYSign > 0 ? Math.Abs(i - 2) : i)] = CurrentDungeon.DungeonTiles[a, b + (-1 + i)];
                 }
@@ -157,24 +181,42 @@ namespace WPF_EoB.ViewModels
             PlayerView.RowThree = new Tuple<byte, byte, byte, byte, byte>(rowThree[0], rowThree[1], rowThree[2], rowThree[3], rowThree[4]);
             PlayerView.RowFour = new Tuple<byte, byte, byte, byte, byte, byte, byte>(rowFour[0], rowFour[1], rowFour[2], rowFour[3], rowFour[4], rowFour[5], rowFour[6]);
         }
+        #endregion
 
-        private bool ConvertTileToBool(byte tileNum)
+        #region Properties
+        private Tuple<byte, byte> mCurrentPosition = new Tuple<byte, byte>(1, 1);
+        /// <summary>
+        /// Gets or sets the players current position.
+        /// </summary>
+        /// <value>
+        /// The players current position.
+        /// </value>
+        public Tuple<byte, byte> CurrentPosition
         {
-            if (tileNum > 0)
-                return true;
-            return false;
+            get { return mCurrentPosition; }
+            set { mCurrentPosition = value; OnPropertyChanged("CurrentDirection"); OnPropertyChanged("CurrentPosition"); }
         }
 
-        private Tuple<byte, byte> mCurrentPosition = new Tuple<byte, byte>(1, 1);
-
         private Classes.Enumerations.Direction mCurrentDirection = Classes.Enumerations.Direction.South;
+        /// <summary>
+        /// Gets or sets the current direction the player is facing.
+        /// </summary>
+        /// <value>
+        /// The current direction the player is facing.
+        /// </value>
         public Classes.Enumerations.Direction CurrentDirection
         {
             get { return mCurrentDirection; }
-            set { mCurrentDirection = value; OnPropertyChanged("CurrentDirection"); }
+            set { mCurrentDirection = value; OnPropertyChanged("CurrentDirection"); OnPropertyChanged("CurrentPosition"); }
         }
 
         private Classes.DungeonMap mCurrentDungeon = new Classes.DungeonMap();
+        /// <summary>
+        /// Gets or sets the current dungeon map.
+        /// </summary>
+        /// <value>
+        /// The current dungeon map.
+        /// </value>
         public Classes.DungeonMap CurrentDungeon
         {
             get { return mCurrentDungeon; }
@@ -182,10 +224,17 @@ namespace WPF_EoB.ViewModels
         }
 
         private ViewModels.VisionConeViewModel mPlayerView = new ViewModels.VisionConeViewModel();
+        /// <summary>
+        /// Gets or sets the players current cone of vision.
+        /// </summary>
+        /// <value>
+        /// The players current cone of vision.
+        /// </value>
         public ViewModels.VisionConeViewModel PlayerView
         {
             get { return mPlayerView; }
             set { mPlayerView = value; }
         }
+        #endregion
     }
 }

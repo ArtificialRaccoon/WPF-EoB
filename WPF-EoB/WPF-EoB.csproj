@@ -69,9 +69,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\BindingProxy.cs" />
+    <Compile Include="Classes\Constants.cs" />
     <Compile Include="Classes\DungeonMap.cs" />
     <Compile Include="Classes\DungeonNavigationCommands.cs" />
     <Compile Include="Classes\Enumerations.cs" />
+    <Compile Include="Classes\NPCClass.cs" />
     <Compile Include="Controls\CharacterPortrait.xaml.cs">
       <DependentUpon>CharacterPortrait.xaml</DependentUpon>
     </Compile>
@@ -87,9 +90,13 @@
     <Compile Include="Controls\NavigationButtons.xaml.cs">
       <DependentUpon>NavigationButtons.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataConverters\NPCToVisibilityConverter.cs" />
+    <Compile Include="DataConverters\MiniMapConverter.cs" />
     <Compile Include="DataConverters\RotationToViewPortConverter.cs" />
+    <Compile Include="DataConverters\SpriteIndexToViewPortConverter.cs" />
+    <Compile Include="DataConverters\WindowSizeConverter.cs" />
     <Compile Include="ViewModels\VisionConeViewModel.cs" />
-    <Compile Include="DataConverters\IndexToViewPortConverter.cs" />
+    <Compile Include="DataConverters\TextureIndexToViewPortConverter.cs" />
     <Compile Include="DataConverters\VisionRowToVisibilityConverter.cs" />
     <Compile Include="ViewModels\MazeViewViewModel.cs" />
     <Compile Include="Views\FirstPersonDungeonView.xaml.cs">
@@ -199,6 +206,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\NESW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\NPCImage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

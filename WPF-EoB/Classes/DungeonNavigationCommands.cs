@@ -7,26 +7,41 @@ using System.Collections.ObjectModel;
 
 namespace WPF_EoB.Classes
 {
+    /// <summary>
+    /// Commands for navigating a player in a Dungeon Map
+    /// </summary>
     public class DungeonNavigationCommands
     {
         private static RoutedUICommand rotatePlayerCommand = new RoutedUICommand("RotatePlayerCommand", "RotatePlayerCommand", typeof(DungeonNavigationCommands));
+        /// <summary>
+        /// Command to rotate the player.
+        /// </summary>
         public static RoutedUICommand RotatePlayerCommand
         {
             get { return rotatePlayerCommand; }
         }
 
         private static RoutedUICommand translatePlayerXCommand = new RoutedUICommand("TranslatePlayerXCommand", "TranslatePlayerXCommand", typeof(DungeonNavigationCommands));
+        /// <summary>
+        /// Command to translate the player along the X axis.
+        /// </summary>
         public static RoutedUICommand TranslatePlayerXCommand
         {
             get { return translatePlayerXCommand; }
         }
 
         private static RoutedUICommand translatePlayerYCommand = new RoutedUICommand("TranslatePlayerYCommand", "TranslatePlayerYCommand", typeof(DungeonNavigationCommands));
+        /// <summary>
+        /// Command to translate the player along the Y axis.
+        /// </summary>
         public static RoutedUICommand TranslatePlayerYCommand
         {
             get { return translatePlayerYCommand; }
-        } 
+        }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DungeonNavigationCommands"/> class.
+        /// </summary>
         public DungeonNavigationCommands()
         {
             CommandManager.RegisterClassCommandBinding(typeof(Window), new CommandBinding(TranslatePlayerXCommand, TranslatePlayerXCommand_Executed, TranslatePlayerXCommand_CanExecute));
