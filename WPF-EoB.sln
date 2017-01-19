@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-EoB", "WPF-EoB\WPF-EoB.csproj", "{01B5E83F-F505-4CBE-985C-09B90ACBA2ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapEditor", "MapEditor\MapEditor.csproj", "{88794D31-D593-48B7-B24A-5D320AE27ADB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{01B5E83F-F505-4CBE-985C-09B90ACBA2ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01B5E83F-F505-4CBE-985C-09B90ACBA2ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01B5E83F-F505-4CBE-985C-09B90ACBA2ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88794D31-D593-48B7-B24A-5D320AE27ADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88794D31-D593-48B7-B24A-5D320AE27ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88794D31-D593-48B7-B24A-5D320AE27ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88794D31-D593-48B7-B24A-5D320AE27ADB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
