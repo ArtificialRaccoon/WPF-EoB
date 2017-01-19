@@ -180,6 +180,13 @@ namespace WPF_EoB.ViewModels
             PlayerView.RowTwo = new Tuple<byte, byte, byte>(rowTwo[0], rowTwo[1], rowTwo[2]);
             PlayerView.RowThree = new Tuple<byte, byte, byte, byte, byte>(rowThree[0], rowThree[1], rowThree[2], rowThree[3], rowThree[4]);
             PlayerView.RowFour = new Tuple<byte, byte, byte, byte, byte, byte, byte>(rowFour[0], rowFour[1], rowFour[2], rowFour[3], rowFour[4], rowFour[5], rowFour[6]);
+
+            PlayerView.VisibleNPC = Classes.Constants.EmptyNPC;
+            foreach(Classes.NPCClass npc in CurrentDungeon.NPCList)
+            {
+                if(npc.Position.Item1 == CurrentPosition.Item1 && npc.Position.Item2 == CurrentPosition.Item2)
+                    PlayerView.VisibleNPC = npc;
+            }
         }
         #endregion
 

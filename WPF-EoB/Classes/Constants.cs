@@ -9,5 +9,6 @@ namespace WPF_EoB.Classes
     {
         public const uint UnscaledWidth = 256;
         public const uint UnscaledHeight = 144;
+        public static readonly Classes.NPCClass EmptyNPC = new NPCClass();
     }
 }
